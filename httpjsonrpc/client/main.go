@@ -1,4 +1,4 @@
-package httpjsonrpc
+package main
 
 // Copyright 2011-2014 ThePiachu. All rights reserved.
 // Use of this source code is governed by a BSD-style
@@ -12,34 +12,37 @@ import (
 	"strings"
 )
 
-func call(address string, method string, id interface{}, params []interface{}) (map[string]interface{}, error) {
+func main() {
+	res, err := httpjsonrpc.call("http://user:pass@127.0.0.1:8332", "getinfo", 1, []interface{}{})
+	if err != nil {
+		log.Fatalf("Err: %v", err)
+	}
+	log.Println(res)
+}
+
+func tmp() {
 	data, err := json.Marshal(map[string]interface{}{
-		"method": method,
-		"id":     id,
-		"params": params,
+		"method": "getinfo",
+		"id":     1,
+		"params": []interface{}{},
 	})
 	if err != nil {
 		log.Fatalf("Marshal: %v", err)
-		return nil, err
 	}
-	resp, err := http.Post(address,
+	resp, err := http.Post("http://user:pass@127.0.0.1:8332",
 		"application/json", strings.NewReader(string(data)))
 	if err != nil {
 		log.Fatalf("Post: %v", err)
-		return nil, err
 	}
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		log.Fatalf("ReadAll: %v", err)
-		return nil, err
 	}
 	result := make(map[string]interface{})
 	err = json.Unmarshal(body, &result)
 	if err != nil {
 		log.Fatalf("Unmarshal: %v", err)
-		return nil, err
 	}
-	//log.Println(result)
-	return result, nil
+	log.Println(result)
 }
