@@ -22,6 +22,6 @@ This is a work-in-progress implementation of HTTP JSON-RPC in Go. Any help is ap
 
 ```bash
 cd $GOPATH/src/github.com
-mkdir rafaelescrich
+mkdir rafaelescrich && cd rafaelescrich
 git clone git@github.com:rafaelescrich/Go-HTTP-JSON-RPC.git
 ```
