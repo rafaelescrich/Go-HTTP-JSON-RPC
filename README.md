@@ -15,7 +15,7 @@ This is a work-in-progress implementation of HTTP JSON-RPC in Go. Any help is ap
 ## Useful links
 
 - Original code - <http://stackoverflow.com/questions/8918455/how-to-properly-call-json-rpc-in-go>
-- Bitcoind JSON call list - <https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list>
+- Bitcoind JSON call list - <https://wiki.programmare.me/Original_Bitcoin_client/API_calls_list>
 - Example request - <https://en.bitcoin.it/wiki/Elis-API#Example_Request>
 
 ## Install
