@@ -11,7 +11,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/rafaelescrich/Go-HTTP-JSON-RPC/httpjsonrpc"
+	"github.com/rafaelescrich/Go-HTTP-JSON-RPC"
 )
 
 func main() {
