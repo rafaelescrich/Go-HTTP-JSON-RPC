@@ -12,7 +12,8 @@ import (
 	"strings"
 )
 
-func call(address string, method string, id interface{}, params []interface{}) (map[string]interface{}, error) {
+// Call this function makes a call to the rcp server
+func Call(address string, method string, id interface{}, params []interface{}) (map[string]interface{}, error) {
 	data, err := json.Marshal(map[string]interface{}{
 		"method": method,
 		"id":     id,

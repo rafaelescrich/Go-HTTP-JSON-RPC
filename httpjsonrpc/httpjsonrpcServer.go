@@ -30,7 +30,7 @@ func SetDefaultFunc(def func(http.ResponseWriter, *http.Request)) {
 	mainMux.defaultFunction = def
 }
 
-//Handle this is the funciton that should be called in order to answer an rpc call
+//Handle this is the function that should be called in order to answer an rpc call
 //should be registered like "http.HandleFunc("/", httpjsonrpc.Handle)"
 func Handle(w http.ResponseWriter, r *http.Request) {
 
@@ -40,10 +40,10 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 			log.Printf("HTTP JSON RPC Handle - Method!=\"POST\"")
 			mainMux.defaultFunction(w, r)
 			return
-		} else {
-			log.Panicf("HTTP JSON RPC Handle - Method!=\"POST\"")
-			return
 		}
+
+		log.Panicf("HTTP JSON RPC Handle - Method!=\"POST\"")
+		return
 	}
 
 	//We must check if there is Request Body to read
@@ -52,10 +52,10 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 			log.Printf("HTTP JSON RPC Handle - Request body is nil")
 			mainMux.defaultFunction(w, r)
 			return
-		} else {
-			log.Panicf("HTTP JSON RPC Handle - Request body is nil")
-			return
 		}
+
+		log.Panicf("HTTP JSON RPC Handle - Request body is nil")
+		return
 	}
 
 	//read the body of the request

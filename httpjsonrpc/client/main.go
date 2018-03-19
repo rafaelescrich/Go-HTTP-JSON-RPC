@@ -10,10 +10,12 @@ import (
 	"log"
 	"net/http"
 	"strings"
+
+	"github.com/rafaelescrich/Go-HTTP-JSON-RPC/httpjsonrpc"
 )
 
 func main() {
-	res, err := httpjsonrpc.call("http://user:pass@127.0.0.1:8332", "getinfo", 1, []interface{}{})
+	res, err := httpjsonrpc.Call("http://user:pass@127.0.0.1:8332", "getinfo", 1, []interface{}{})
 	if err != nil {
 		log.Fatalf("Err: %v", err)
 	}
